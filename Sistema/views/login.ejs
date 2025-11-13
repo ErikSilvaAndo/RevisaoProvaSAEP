@@ -1,10 +1,16 @@
     <%- include('./layouts/header.ejs', {titulo: 'Acesse o Sistema'}) %>
     <div class="container">
         <h1 class="titulo">Login</h1>
-        <label class="label">E-mail:</label>
-        <input type="email" name="email" class="input-padrao" placeholder="Ex: meuEmail@gmail.com" required>
-        <label class="label">Senha:</label>
-        <input type="password" name="password" class="input-padrao" placeholder="Ex: 12345678" required>
-        <button type="submit" class="botao">Entrar</button>
+        <form action="/auth/login" method="post" class="cardFormulario">
+            <div>
+                <label class="label" for="email">E-mail:</label>
+                <input type="text" name="email" class="input-padrao" placeholder="Ex: meuEmail@gmail.com" required>
+            </div>
+            <div>
+                <label class="label">Senha:</label>
+                <input type="password" name="senha" class="input-padrao" placeholder="Ex: 12345678" required>
+            </div>
+            <button type="submit" class="botao">Entrar</button>
+        </form>
     </div>
     <%- include('./layouts/footer.ejs', {titulo: 'Acesse o Sistema'}) %>

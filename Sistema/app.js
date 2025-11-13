@@ -15,6 +15,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// importar rotas
+import loginRotas from './routes/loginRoutes.js';
+import painelRotas from './routes/painelRoutes.js';
+
+// usando rotas
+app.use('/auth', loginRotas);
+app.use('/painel', painelRotas);
+
 app.use(session({
     secret: process.env.SESSION_SECRET || 'segredo123',
     resave: false,
@@ -31,4 +39,4 @@ app.get('/', (req, res) => {
     res.render('login', {error: null})
 })
 
-app.listen(3000, () => console.log("🚀Sistema roadndo em http://localhost:3000"))
+app.listen(3000, () => console.log("🚀 Sistema roadndo em http://localhost:3000"))

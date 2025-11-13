@@ -1,0 +1,19 @@
+    <%- include('./layouts/header.ejs', {titulo: 'Painel Administrativo'}) %>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="/produtos/listar">Cadastro de Produtos</a></li>
+                <li><a href="/movimentacoes/listar">Gestão de Estoque</a></li>
+                <li><a href="/auth/logout">Sair</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h2>Bem-Vindo, <% if(usuario) { %>
+                <%= usuario.email %>
+                <% } %>
+            </h2>
+            <p>Escolha uma opção para navegar no sistema</p>
+        </section>
+    </div>
+    
+    <%- include('./layouts/footer.ejs') %>
