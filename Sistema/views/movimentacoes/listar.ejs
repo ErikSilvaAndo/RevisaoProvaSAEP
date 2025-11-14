@@ -1,0 +1,36 @@
+<%- include('../layouts/header.ejs', {titulo: 'Listagem de Movimentação' }) %>
+    <div>
+        <h2>Lista de Movimentação</h2>
+        <a href="/movimentacoes/novo">Adicionar Movimentação</a>
+        <form action="/movimentacoes/listar" method="get">
+            <input type="text" name="busca" id="busca" value="<%= busca || '' %>" placeholder="Buscar">
+            <button type="button">Buscar</button>
+        </form>
+        <table border="1">
+            <tr>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Produto</th>
+                <th>Quantidade Prod.</th>
+                <th>Quantidade Mov.</th>
+                <th>Ações</th>
+            </tr>
+            <% movimentacoes.forEach(m => { %>
+                <tr>
+                    <td><%= new Date(m.data_cadastro).toLocaleDateString('pt-BR') %></td>
+                    <td><%= m.tipo %></td>
+                    <td><%= m.nome.produto %></td>
+                    <td><%= m.qtde_prduto %></td>
+                    <td><%= m.quantidade %></td>
+                    <td>
+                        <a href="/movimentacoes/editar/<%= m.id_mov %>">Editar</a>
+                        <form action="/movimentacoes/excluir/<%= m.id_mov %>" method="post">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+        <a href="/painel/listar">Voltar</a>
+    </div>
+    <%- include('../layouts/footer.ejs') %>

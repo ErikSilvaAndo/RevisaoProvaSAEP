@@ -1,0 +1,29 @@
+<%- include('../layouts/header.ejs', {titulo: 'Edição de movimentacões' }) %>
+    <div>
+        <h2>Edição de Movimentação</h2>
+        <form action="/movimentacoes/editar/<%= m.id_mov %>" method="post" class="cardFormulario">
+            <div>
+                <label for="id_produto">Produto</label>
+                <select name="id_produto" id="id_produto" required>
+                    <option value="">Selecione um produto</option>
+                    <% produtos.forEach(p=> { %>
+                        <option value="<%= p.id_produto %>" <%= p.id_produto === m.id_produto ? 'selected' : '' >><%= p.nome_produto %></option>
+                        <% }) %>
+                </select>
+            </div>
+            <div>
+                <label class="label" for="tipo">Tipo:</label>
+                <select name="tipo" id="tipo">
+                    <option value="E" <%= m.tipo === 'E' ? 'selected' : '' %>>Entrada</option>
+                    <option value="S" <%= m.tipo === 'S' ? 'selected' : '' %>>Saída</option>
+                </select>
+            </div>
+            <div>
+                <label class="label">Quantidade:</label>
+                <input type="number" name="quantidade" id="quantidade" class="input-padrao" value="<%= m.quantidade %>" required>
+            </div>
+            <button type="submit" class="botao">Cadastrar</button>
+            <a href="/movimentacoes/listar">Cancelar</a>
+        </form>
+    </div>
+    <%- include('../layouts/footer.ejs') %>
