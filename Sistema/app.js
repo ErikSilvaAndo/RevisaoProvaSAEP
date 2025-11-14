@@ -29,12 +29,14 @@ function checkAuth(req, res, next){
 import loginRotas from './routes/loginRoutes.js';
 import painelRotas from './routes/painelRoutes.js';
 import produtosRotas from './routes/produtosRoutes.js'
+import movRotas from './routes/movRoutes.js'
 
 
 //usando rotas
 app.use('/auth', loginRotas);
 app.use('/painel', painelRotas);
-app.use('/produtos', produtosRotas)
+app.use('/produtos', produtosRotas);
+app.use('/movimentacoes', movRotas);
 
 app.get('/', (req, res) => {
     res.render('login', {error: null})
