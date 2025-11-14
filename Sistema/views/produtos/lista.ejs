@@ -1,0 +1,32 @@
+<%- include('../layouts/header.ejs', {titulo: 'Listagem de Produtos'}) %>
+    <div>
+        <h2>Lista de Produto</h2>
+        <a href="/produtos/novo">Adicionar produto</a>
+        <form action="/produtos/listar" method="get">
+            <input type="text" name="busca" id="busca" value="<%= busca || '' %>" placeholder="Buscar">
+            <button type="button">Buscar</button>
+        </form>
+        <table border="1">
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Estoque Min.</th>
+                <th>Ações</th>
+            </tr>
+            <% produtos.forEach(p => { %>
+                <tr>
+                    <td><%= p.nome_produto %></td>
+                    <td><%= p.quantidade %></td>
+                    <td><%= p.estoque_minimo %></td>
+                    <td>
+                        <a href="/produtos/editar/<%= p.id_produto %>">Editar</a>
+                        <form action="/produtos/excluir/<%= p.id_produto %>" method="post">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+        <a href="/painel/listar">Voltar</a>
+    </div>
+<%- include('../layouts/footer.ejs') %>

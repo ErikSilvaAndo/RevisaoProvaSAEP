@@ -1,0 +1,21 @@
+<%- include('../layouts/header.ejs', {titulo: 'Edição de Produto'}) %>
+    <div>
+        <h2>Cadastro de Produto</h2>
+        <form action="/produtos/editar/<%= p.id_produto %>" method="post" class="cardFormulario">
+            <div>
+                <label class="label" for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" class="input-padrao" placeholder="Ex: Chinelo" value="<%= p.nome_produto %>">
+            </div>
+            <div>
+                <label class="label" for="estoque_minimo">Estoque minímo:</label>
+                <input type="number" name="estoque_minimo" id="estoque_minimo" class="input-padrao" placeholder="Ex: 1" value="<%= p.estoque_minimo%>">
+            </div>
+            <div>
+                <label class="label" for="quantidade">Quantidade:</label>
+                <input type="number" name="quantidade" id="quantidade" class="input-padrao" placeholder="Ex: 5" value="<%= p.quantidade %>">
+            </div>
+            <button type="submit" class="botao">Editar</button>
+            <a href="/produtos/listar">Cancelar</a>
+        </form>
+    </div>
+<%- include('../layouts/footer.ejs') %>
