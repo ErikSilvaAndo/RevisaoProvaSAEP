@@ -14,7 +14,7 @@ router.get('/listar', async (req, res) => {
     }
     sql += " ORDER BY p.nome_produto ASC";
     const result = await bd.query(sql, params);
-    res.render('movimentacoes/lista', { usuario: req.session.user, movimentacoes: result.rows, busca });
+    res.render('movimentacoes/listar', { usuario: req.session.user, movimentacoes: result.rows, busca });
 });
 
 router.get('/novo', async (req, res) => {
